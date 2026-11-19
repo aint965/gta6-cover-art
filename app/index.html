@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
+  <title>Sundown Studio · Cover Maker</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="sun" aria-hidden="true"></span><h1>SUNDOWN<span> STUDIO</span></h1></div>
+    <div class="top-actions">
+      <label class="sr-only" for="size">Canvas size</label>
+      <select id="size">
+        <option value="wide">Landscape · 1920 × 1080</option>
+        <option value="portrait">Portrait · 1080 × 1350</option>
+        <option value="square">Square · 1080 × 1080</option>
+      </select>
+      <button id="export" class="primary" disabled><span aria-hidden="true">↓</span> Export PNG</button>
+    </div>
+  </header>
+  <main class="workspace">
+    <aside class="sidebar" aria-label="Cover controls">
+      <section>
+        <div class="section-head"><h2>Photos</h2><button id="demo" class="text-button">Load samples</button></div>
+        <label class="upload" for="photo"><span aria-hidden="true">＋</span> Add photos <small>or drop here</small></label>
+        <input id="photo" class="sr-only" type="file" accept="image/*" multiple>
+        <div id="library" class="library" aria-label="Assign photo to selected panel"></div>
+      </section>
+      <section>
+        <div class="section-head"><h2>Layout</h2></div>
+        <div class="layouts" id="layouts" role="group" aria-label="Panel layout">
+          <button data-layout="cut" aria-pressed="true"><i class="mini cut" aria-hidden="true"></i>Crosscut</button>
+          <button data-layout="strip" aria-pressed="false"><i class="mini strip" aria-hidden="true"></i>Triptych</button>
+          <button data-layout="grid" aria-pressed="false"><i class="mini grid" aria-hidden="true"></i>Quad</button>
+        </div>
+        <label class="field">Color grade<select id="grade"><option value="sunset">Sunburn</option><option value="neon">Midnight Neon</option><option value="natural">Natural</option></select></label>
+      </section>
+      <section>
+        <div class="section-head"><h2>Caption</h2></div>
+        <label class="sr-only" for="caption">Caption text</label>
+        <textarea id="caption" rows="2" maxlength="100" placeholder="Write a caption">PALM CITY&#10;AFTER DARK</textarea>
+        <label class="field slider">Text size <input id="type-size" type="range" min="55" max="140" value="100"></label>
+        <div class="pair">
+          <label class="field">Ink <input id="ink" type="color" value="#fff3ce"></label>
+          <label class="field">Outline <input id="outline" type="color" value="#180c23"></label>
+        </div>
+        <label class="field slider">Outline weight <input id="outline-weight" type="range" min="0" max="170" value="100"></label>
+      </section>
+    </aside>
+    <section class="studio" aria-label="Live preview and crop controls">
+      <div class="stage-head"><h2>Live preview</h2><span id="dimensions" class="mono"></span></div>
+      <div class="stage" id="stage">
+        <div class="artboard"><canvas id="cover" width="1920" height="1080" aria-label="Cover preview. Select a panel below or click it here, then drag or use arrow keys to reposition its photo." tabindex="0"></canvas>
+          <svg class="crop-guide" id="crop-guide" aria-hidden="true" viewBox="0 0 1000 1000" preserveAspectRatio="none"><polygon></polygon></svg>
+        </div>
+      </div>
+      <div class="crop-bar">
+        <div class="crop-choice"><label for="panel">Crop panel</label><select id="panel"></select></div>
+        <label class="crop-zoom" for="zoom">Zoom <input id="zoom" type="range" min="1" max="4" step="0.01" value="1"><output id="zoom-value" for="zoom">1.00×</output></label>
+        <button id="reset" class="text-button">Reset crop</button>
+        <p class="crop-hint">Drag a panel to reframe</p>
+      </div>
+      <p id="status" class="status" role="status"></p>
+    </section>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

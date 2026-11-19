@@ -1,0 +1,5 @@
+[
+  { "name": "1-cover.jpg", "query": "?demo=sunburn", "w": 1280, "h": 720 },
+  { "name": "2-editor.jpg", "query": "?demo=sunburn", "w": 1280, "h": 720 },
+  { "name": "3-cover-1350.jpg", "query": "?demo=neon", "w": 896, "h": 1120 }
+]
